@@ -6,6 +6,7 @@ clc
 % Read Input parameters
 Input_Parameters
 addpath functions
+addpath Scripts
 
 %% Channel Impulse Response
 
@@ -29,12 +30,13 @@ SpatialLobes=Generate_Spatial_Properties(Param.Spatial,TimePositions);
 SISO_CIR=Generate_SISO_CIR(Param.System,TimePositions,MultipathPower,...
     MultipathPhase,SpatialLobes);
 
+Statistics_SISO=Extract_SISO_Statistics(SISO_CIR);
+
 % Calculate MIMO Channel Impulse Response
 
 CovarianceMatrix=Generate_Array_Covariance_Matrix(Param,TimePositions,SpatialLobes);
 MIMO_CIR=Generate_MIMO_CIR(Param.System,CovarianceMatrix,MultipathPower,...
     MultipathPhase,TimePositions,SpatialLobes);
 
-
-%% Narrowband Modulation (SISO)
-
+%% Narrowband SISO Modulation
+Narrowband_SISO_Modulation

@@ -14,6 +14,8 @@ for i=1:length(MultipathPower.Amplitude)
     H{i}=MultipathPower.Amplitude(i)*exp(1i*MultipathPhase.Phase(i))*H{i};
     PDP{i}=H{i}.*conj(H{i}); 
 end
+MIMO_CIR.ReceiveAntennas=System.Nr;
+MIMO_CIR.TransmitAtennas=System.Nt;
 MIMO_CIR.Index=TimePositions.TimeIndex;
 MIMO_CIR.H=H;
 MIMO_CIR.Time=TimePositions.ExcessTime;

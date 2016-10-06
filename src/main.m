@@ -38,5 +38,11 @@ CovarianceMatrix=Generate_Array_Covariance_Matrix(Param,TimePositions,SpatialLob
 MIMO_CIR=Generate_MIMO_CIR(Param.System,CovarianceMatrix,MultipathPower,...
     MultipathPhase,TimePositions,SpatialLobes);
 
+Statistics_MIMO=Extract_MIMO_Statistics(MIMO_CIR);
+
+% Plot Local Area Response
+Plot_MIMO_Local_Area
 %% Narrowband SISO Modulation
-Narrowband_SISO_Modulation
+% Narrowband_SISO_Modulation
+%% Narrowband MIMO Modulation
+Narrowband_MIMO_Modulation

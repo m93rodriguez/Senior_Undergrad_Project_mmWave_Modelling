@@ -29,7 +29,7 @@ for i=1:System.Nr
     for j=1:System.Nt
         h{i,j}=zeros(size(n));
         for cont=1:length(TimePositions.TimeIndex)
-            h{i,j}(cont)=H{cont}(i,j);
+            h{i,j}(TimePositions.TimeIndex(cont))=H{cont}(i,j);
         end
     end
 end

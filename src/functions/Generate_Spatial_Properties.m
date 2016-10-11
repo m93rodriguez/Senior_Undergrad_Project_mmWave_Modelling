@@ -31,11 +31,11 @@ AOA=Mean_AOA(MeanAOAIndex)+Param.AS_AOA_az*randn(size(MeanAOAIndex));
 SpatialLobes=struct;
 SpatialLobes.AODLobes=AODLobes;
 SpatialLobes.AOALobes=AOALobes;
-SpatialLobes.MeanAOD=Mean_AOD;
-SpatialLobes.MeanAOA=Mean_AOA;
+SpatialLobes.MeanAOD=deg2rad(Mean_AOD);
+SpatialLobes.MeanAOA=deg2rad(Mean_AOA);
 SpatialLobes.MeanAODIndex=MeanAODIndex;
 SpatialLobes.MeanAOAIndex=MeanAOAIndex;
-SpatialLobes.AOD=AOD;
-SpatialLobes.AOA=AOA;
+SpatialLobes.AOD=deg2rad(AOD);
+SpatialLobes.AOA=deg2rad(AOA);
 
 end

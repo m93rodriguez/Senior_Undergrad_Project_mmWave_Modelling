@@ -19,7 +19,7 @@ Param.System.Nt=10;                 % Number of transmit antennas
 Param.System.Nr=10;                 % Number of recieve antennas
 Param.System.BW=800;                % Bandpass Bandwidth (MHz)
 Param.System.TimeResolution=2e3/Param.System.BW;         % Time resolution (ns)
-Param.System.AntennaSeparation=Param.Phys.lambda;           % Antenna array separation
+Param.System.AntennaSeparation=Param.Phys.lambda/2;           % Antenna array separation
 %--------------------------------------------------------------------------
 % Statistical Parameters
 % Time Cluster Statistics

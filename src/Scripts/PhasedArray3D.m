@@ -28,8 +28,11 @@ Phase=zeros(1,N);
 Phase=3*(1:N)/2/pi;
 % Phase=angle(TransmitMatrix*x);
 
+
 for k=0:0.1:50
+    
 Phase=k*(1:N)/2/pi;
+
 %% Calculate phase shifts
 Gain=zeros(size(x_Far));
 
@@ -55,6 +58,7 @@ S.FaceColor='interp';
 S.LineStyle=':';
 axis image
 colormap jet
+caxis([0 1])
 pause(0.001)
 hold off
 end

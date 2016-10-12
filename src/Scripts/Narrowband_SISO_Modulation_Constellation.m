@@ -20,8 +20,8 @@ SymbolDuration=Index_Duration;
 
 % Modulation
 
-Type='QAM';
-BitsPerSymbol=2;
+Type='PSK';
+BitsPerSymbol=4;
 NumSymbols=2^BitsPerSymbol;
 Map=Generate_Constellation_Map(BitsPerSymbol,Type);
 
@@ -42,7 +42,7 @@ x=x/sqrt(EnergyPerSymbol);
 r=conv(x,h);
 
 % AWGN
-NoisePower=20;
+NoisePower=0;
 Noise=normrnd(0,sqrt(NoisePower),size(r))+...
     1i*normrnd(0,sqrt(NoisePower),size(r));
 Noise=Noise/sqrt(2);

@@ -50,7 +50,7 @@ Noise=Noise/sqrt(2);
 % Noisy signal
 r=r+Noise;
 
-% Amplificationh
+% Amplification
 r=r/abs(sum(h))*sqrt(EnergyPerSymbol);
 
 %% Demodulation

@@ -6,7 +6,7 @@ function MIMO_CIR=Generate_MIMO_CIR(System,CovarianceMatrix,MultipathPower,Multi
 H=cell(1,length(MultipathPower.Amplitude));
 PDP=H;
 for i=1:length(MultipathPower.Amplitude)
-    Rayleigh_iid_Matrix=randn(System.Nr,System.Nt)+1i*randn(System.Nr,System.Nt);
+    Rayleigh_iid_Matrix=(randn(System.Nr,System.Nt)+1i*randn(System.Nr,System.Nt))/sqrt(2);
     [Vector_r,Value_r]=eig(CovarianceMatrix.Receive{i});
     [Vector_t,Value_t]=eig(CovarianceMatrix.Transmit{i});
     

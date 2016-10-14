@@ -1,31 +1,32 @@
-function Modulation=Symbol_Modulation(Symbol,ModulationDefinition)
+function Signal=Symbol_Modulation(Stream,ModulationDefinition)
 
-
+%% Read Modulation Characteristics
 BitsPerSymbol=ModulationDefinition.BitsPerSymbol;
 SymbolDuration=ModulationDefinition.SymbolDuration;
 Type=ModulationDefinition.Type;
 GrayCode=ModulationDefinition.GrayCode;
+GrayCodeMap=ModulationDefinition.GrayCodeMapping;
+ConstellationMap=ModulationDefinition.ConstellationMap;
 
 NumAntennas=numel(BitsPerSymbol);
+BitsPerPeriod=sum(BitsPerSymbol);
+NumSymbols=ceil(numel(Stream)/BitsPerPeriod);
+
+%% Bit Multiplexing
+
+Symbol=Bit_Multiplexing(Stream,ModulationDefinition);
+%% Signal Modulation
+
 NumSymbols=size(Symbol,2);
-
-Map=cell(1,NumAntennas);
-
-for cont=1:NumAntennas
-    Map{cont}=Generate_Constellation_Map(BitsPerSymbol(cont),Type);
-end
 
 Signal=[];
 for cont=1:NumSymbols
     for antenna=1:NumAntennas
-        Mod(antenna,:)=Map{antenna}(Symbol(antenna,cont))*ones(1,SymbolDuration);
+        Mod(antenna,:)=ConstellationMap{antenna}(GrayCodeMap{antenna}(Symbol(antenna,cont)))...
+            *ones(1,SymbolDuration);
+        % Energy Normalization
+        Mod(antenna,:)=Mod(antenna,:)/sqrt(ModulationDefinition.ConstellationEnergy(antenna));
     end
     Signal=[Signal Mod];
 end
-
-
-Modulation.Map=Map;
-Modulation.Signal=Signal;
-    
-
 end

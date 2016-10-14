@@ -8,7 +8,7 @@ for i=1:length(MIMO_CIR.h(:))
     PDP(i,:)=h.*conj(h);
 end
 
-PDP=mean(PDP);
+PDP=mean(PDP,1);
 
 
 

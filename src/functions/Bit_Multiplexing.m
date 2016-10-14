@@ -1,14 +1,18 @@
-function Symbol=Bit_Multiplexing(Stream,BitsPerSymbol)
+function Symbol=Bit_Multiplexing(Stream,ModulationDefinition)
 
-NumAntennas=length(BitsPerSymbol);
+BitsPerSymbol=ModulationDefinition.BitsPerSymbol;
 BitsPerPeriod=sum(BitsPerSymbol);
-NumPeriods=ceil(numel(Stream)/BitsPerPeriod);
+NumAntennas=numel(BitsPerSymbol);
+NumSymbols=ceil(numel(Stream)/BitsPerPeriod);
 
-while numel(Stream)<NumPeriods*BitsPerPeriod
+
+% Complete de Stream Length
+while numel(Stream)<NumSymbols*BitsPerPeriod
     Stream=[Stream '0'];
 end
 
-for cont=1:NumPeriods
+% Separate bits to each antenna according to the modulation length
+for cont=1:NumSymbols
     for antenna=1:NumAntennas
         if BitsPerSymbol(antenna)==0
             continue

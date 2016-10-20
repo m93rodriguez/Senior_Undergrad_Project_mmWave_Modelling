@@ -29,4 +29,6 @@ for cont=1:NumSymbols
     end
     Signal=[Signal Mod];
 end
+Inactive=zeros(ModulationDefinition.ExcessTransmitAntennas,size(Signal,2));
+Signal=[Signal;Inactive];
 end

@@ -17,42 +17,11 @@ for cont=1:NumAntennas
                 QAM{y,x}=[Bits_Y{y} Bits_X{x}];
             end
         end
-        Bits=QAM(:);
+        Bits=QAM(:)';
         
     elseif strcmp(type,'PSK')
         Bits=Generate_Graycode(NumBits);
     end
-    %%
-%     if strcmp(type,'QAM')
-%         NumBits=ceil(NumBits/2);
-%     end
-%     
-%     Bits={'0','1'};
-%     N=length(Bits);
-%     
-%     while N<2^NumBits
-%         Bits2=flip(Bits);
-%         
-%         for i=1:N
-%             Bits{i}=['0' Bits{i}];
-%             Bits2{i}=['1' Bits2{i}];
-%         end
-%         Bits=[Bits Bits2];
-%         N=length(Bits);
-%     end
-%     
-%     if strcmp(type,'QAM')
-%         
-%         QAM=cell(length(Bits));
-%         for cont1=1:length(Bits);
-%             for cont2=1:cont1
-%                 QAM{cont1,cont2}=[Bits{cont1} Bits{cont2}];
-%                 QAM{cont2,cont1}=[Bits{cont2} Bits{cont1}];
-%             end
-%         end
-%         Bits=QAM(:);
-%     end
-    %%
     
     SymbolUnmapping{cont}=cellfun(@bin2dec,Bits)+1;
     [~,SymbolMapping{cont}]=sort(SymbolUnmapping{cont});

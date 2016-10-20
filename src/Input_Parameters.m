@@ -15,8 +15,8 @@ Param.Large.Power=70;                  % Transmit Power (dB)
 Param.Large.CloseIn=1;                   % Close in reference
 %--------------------------------------------------------------------------
 % System Definition
-Param.System.Nt=5;                 % Number of transmit antennas
-Param.System.Nr=5;                 % Number of recieve antennas
+Param.System.Nt=1;                 % Number of transmit antennas
+Param.System.Nr=1;                 % Number of recieve antennas
 Param.System.BW=800;                % Bandpass Bandwidth (MHz)
 Param.System.TimeResolution=2e3/Param.System.BW;         % Time resolution (ns)
 Param.System.AntennaSeparation=Param.Phys.lambda/2;           % Antenna array separation

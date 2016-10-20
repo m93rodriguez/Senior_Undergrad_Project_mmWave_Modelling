@@ -1,16 +1,16 @@
 BinaryDigits='01';
-StreamLength=1000;
+StreamLength=10000;
 Stream=BinaryDigits(randi(2,1,StreamLength));
 
-ModulationDefinition=struct;
+% ModulationDefinition=struct;
 
-ModulationDefinition.BitsPerSymbol=2*ones(1,min(Param.System.Nt,Param.System.Nr));
+% ModulationDefinition.BitsPerSymbol=2*ones(1,min(Param.System.Nt,Param.System.Nr));
 ModulationDefinition.ExcessTransmitAntennas=max(0,Param.System.Nt-Param.System.Nr);
 ModulationDefinition.ExcessReceiveAntennas=max(0,Param.System.Nr-Param.System.Nt);
 
-ModulationDefinition.SymbolDuration=Index_Duration;
-ModulationDefinition.PulseShape=ones(1,ModulationDefinition.SymbolDuration);
-ModulationDefinition.Type='PSK';
+% ModulationDefinition.SymbolDuration=Index_Duration;
+% ModulationDefinition.PulseShape=ones(1,ModulationDefinition.SymbolDuration);
+% ModulationDefinition.Type='QAM';
 
 ModulationDefinition.GrayCode='on';
 [ModulationDefinition.GrayCodeMapping,ModulationDefinition.GrayCodeUnmapping]...

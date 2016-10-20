@@ -2,7 +2,7 @@
 
 lambda=Param.Phys.lambda;
 %% Geometry Definition
-Distance=100*lambda;
+Distance=1000*lambda;
 phi=linspace(0,2*pi,70);
 theta=linspace(-pi/2,pi/2,70);
 [Theta,Phi,R]=meshgrid(theta,phi,Distance);
@@ -28,6 +28,10 @@ Phase=zeros(1,N);
 Phase=3*(1:N)/2/pi;
 % Phase=angle(TransmitMatrix*x);
 
+% Video
+Video=VideoWriter('Video.avi');
+Video.FrameRate=10;
+open(Video);
 
 for k=0:0.1:50
     
@@ -59,7 +63,16 @@ S.LineStyle=':';
 axis image
 colormap jet
 caxis([0 1])
-pause(0.001)
+
+T=title('Antenna array emission pattern');
+xlabel('X-Direction Gain');
+ylabel('Y-Direction Gain');
+zlabel('Z-Direction Gain')
+
+print('Imagen.png','-dpng');
+frame=imread('Imagen.png');
+writeVideo(Video,frame);
+
 hold off
 end
 

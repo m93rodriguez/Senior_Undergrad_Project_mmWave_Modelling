@@ -1,6 +1,6 @@
 %% Initialization
 clear all
-close all
+% close all
 clc
 
 % Read Input parameters

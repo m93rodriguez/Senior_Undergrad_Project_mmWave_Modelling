@@ -46,13 +46,13 @@ addpath Experiments
 Resultados=struct;
 
 
-for cont=1:NumberOfCIRs
+for cont_CIRs=1:NumberOfCIRs
     
     CIR=System_Generation(Param);
     MIMO_CIR=CIR.MIMO;
     Statistics_MIMO=Extract_MIMO_Statistics(MIMO_CIR);
     
-    Resultados.TimeStatistics{cont}=Statistics_MIMO;
+    Resultados.TimeStatistics{cont_CIRs}=Statistics_MIMO;
     
     for Type=1:2
         
@@ -74,7 +74,7 @@ for cont=1:NumberOfCIRs
                     ErrorStatistics=Narrowban_Demodulation_Function(SNR,...
                         ModulationDefinition,Stream,Param,Output);
                     
-                    Resultados.Error{cont,Type,cont_Time,cont_Order,cont_SNR}=...
+                    Resultados.Error{cont_CIRs,Type,cont_Time,cont_Order,cont_SNR}=...
                         ErrorStatistics;
                     cont_SNR=cont_SNR+1;
                 end
@@ -86,8 +86,8 @@ for cont=1:NumberOfCIRs
         
         
     end
-    Resultados.Gain=Output.Gain;
-    Done=round(cont/NumberOfCIRs*100);
+    Resultados.Gain{cont_CIRs}=Output.Gain;
+    Done=round(cont_CIRs/NumberOfCIRs*100);
     fprintf(['Completition: ',num2str(Done),'%% \n'])
 end
 

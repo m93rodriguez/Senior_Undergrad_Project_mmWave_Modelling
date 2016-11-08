@@ -1,5 +1,5 @@
 BinaryDigits='01';
-StreamLength=1000;
+StreamLength=5000;
 Stream=BinaryDigits(randi(2,1,StreamLength));
 
 ModulationDefinition=struct;

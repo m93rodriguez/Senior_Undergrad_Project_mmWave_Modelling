@@ -3,7 +3,7 @@
 RMS_DS=Statistics_MIMO.RMSDelaySpread;
 
 % Coherence Bandwidth
-Time_Duration=10*RMS_DS;
+Time_Duration=100*RMS_DS;
 Index_Duration=ceil(Time_Duration/Param.System.TimeResolution);
 
 %%  Message Definition
@@ -59,7 +59,7 @@ Demodulation=Symbol_Demodulation(y,Gain,ModulationDefinition);
 %% Error Statistics
 ErrorStatistics=Extract_Error_Statistics(Stream,ModulationDefinition,Demodulation);
 %% Plotting
-Antenna=1;
+Antenna=4;
 
 InSymbols=ErrorStatistics.InSymbols(Antenna,:);
 OutSymbols=Demodulation.SymbolPosition{Antenna};
@@ -74,15 +74,15 @@ GrayMap=ModulationDefinition.GrayCodeMapping{Antenna};
 Map=ModulationDefinition.ConstellationMap{Antenna};
 SymbolMeans=Map(GrayMap(InSymbols));
 
-InterferenceNoise=imag(OutSymbols-SymbolMeans);
-% scatter(real(InterferenceNoise),imag(InterferenceNoise),10,'filled');
+
+InterferenceNoise=(OutSymbols-SymbolMeans);
+figure,scatter(real(InterferenceNoise),imag(InterferenceNoise),10,'filled');
 
 [CDF,Value]=histcounts(real(InterferenceNoise),200,'Normalization','cdf');
 Value=(Value(1:end-1)+Value(2:end))/2;
 x_CDF=linspace(min(Value),max(Value),length(CDF));
-y_CDF=normcdf(x_CDF,mean(InterferenceNoise),std(InterferenceNoise));
-% figure
-% plot(Value,CDF,'-*'),hold on, plot(x_CDF,y_CDF,'-r*')
+y_CDF=normcdf(x_CDF,mean(real(InterferenceNoise)),std(real(InterferenceNoise)));
+figure,plot(Value,CDF,'-*'),hold on, plot(x_CDF,y_CDF,'-r*')
 
 
 

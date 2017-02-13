@@ -53,7 +53,7 @@ hold off
 legend('Data CDF','Rayleigh CDF','Log-Normal CDF','Location','best')
 xlabel('RMS Delay Spread (ns)')
 ylabel('Probability')
-title('RMS Delay Spread Cumulative Density Function (CDF)')
+title('Channel Gain Cumulative Density Function (CDF)')
 %% Error Analysis
 Error=cell(size(Resultados.Error,3),size(Resultados.Error,4),2);
 Error_Variance=Error;

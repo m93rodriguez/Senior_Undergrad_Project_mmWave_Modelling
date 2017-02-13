@@ -7,6 +7,8 @@ function R=ArrayCovarianceULA(theta,RMS_AS,N,d,lambda)
 % mean angle theta, following a Laplacian distribution with a RMS angle
 % spread RMS_AS.
 
+RMS_AS=deg2rad(RMS_AS);
+
 % Generate the Laplacian PDF:
 Num_Points=1000;
 theta_vec=linspace(-pi,pi,Num_Points);

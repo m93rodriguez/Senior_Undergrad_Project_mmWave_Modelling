@@ -38,7 +38,7 @@ for cont=1:Num_Rays-1
     L.Color=[0.7 0.7 0.7];
     L.LineStyle='--';
     T=text(1.1*cos(Ray_Ang(cont)),1.1*sin(Ray_Ang(cont)),...
-        [num2str(rad2deg(Ray_Ang(cont))) ' °']);
+        [num2str(rad2deg(Ray_Ang(cont))) ' Â°']);
     T.HorizontalAlignment='center';
     T.VerticalAlignment='middle';
 end

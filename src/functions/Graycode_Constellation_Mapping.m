@@ -7,7 +7,9 @@ for cont=1:NumAntennas
     NumBits=ModulationDefinition.BitsPerSymbol(cont);
     type=ModulationDefinition.Type;
     
-    if strcmp(type,'QAM')
+    if strcmp(type,'PSK') || NumBits==1
+        Bits=Generate_Graycode(NumBits);
+    elseif strcmp(type,'QAM')
         Bits_X=Generate_Graycode(ceil(NumBits/2));
         Bits_Y=Generate_Graycode(floor(NumBits/2));
         QAM=cell(length(Bits_Y),length(Bits_X));
@@ -19,8 +21,8 @@ for cont=1:NumAntennas
         end
         Bits=QAM(:)';
         
-    elseif strcmp(type,'PSK')
-        Bits=Generate_Graycode(NumBits);
+%     elseif strcmp(type,'PSK')
+%         Bits=Generate_Graycode(NumBits);
     end
     
     SymbolUnmapping{cont}=cellfun(@bin2dec,Bits)+1;

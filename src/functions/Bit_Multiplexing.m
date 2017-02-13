@@ -1,4 +1,6 @@
 function Symbol=Bit_Multiplexing(Stream,ModulationDefinition)
+% Bit Multiplexing for Signal Modulation
+%   Symbol=Bit_Multiplexing(Stream,ModulationDefinition)
 
 BitsPerSymbol=ModulationDefinition.BitsPerSymbol;
 BitsPerPeriod=sum(BitsPerSymbol);
@@ -12,6 +14,7 @@ while numel(Stream)<NumSymbols*BitsPerPeriod
 end
 
 % Separate bits to each antenna according to the modulation length
+% AntennaStream=cell(NumAntennas,1);
 for cont=1:NumSymbols
     for antenna=1:NumAntennas
         if BitsPerSymbol(antenna)==0
@@ -20,6 +23,7 @@ for cont=1:NumSymbols
             StreamSec=Stream(1:BitsPerSymbol(antenna));
             Symbol(antenna,cont)=bin2dec(StreamSec);
             Stream=Stream(BitsPerSymbol(antenna)+1:end);
+%             AntennaStream{antenna}=[AntennaStream{antenna} StreamSec];
         end
     end
 end

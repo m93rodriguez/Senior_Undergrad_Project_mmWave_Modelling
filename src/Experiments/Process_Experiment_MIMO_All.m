@@ -26,7 +26,7 @@ Narrowband=10:20:100;
 
 %% Gaussianity Test
 
-Distance=5; % Max 5
+Distance=1; % Max 5
 AntennaCluster=8; %Max 8
 
 Prob_real=zeros(2*AntennaCluster-1,30,5);
@@ -61,8 +61,8 @@ end
 
 %% Noise Measurement
 
-Distance=5; % Max 5
-AntennaCluster=5; % Max 8
+Distance=1; % Max 5
+AntennaCluster=8; % Max 8
 Order=3;
 Factor=5;
 
@@ -144,10 +144,10 @@ title('Interference Noise Characterization')
 
 %% Gain
 
-cont_Distance=5;
+cont_Distance=1;
 
 Order=1;
-cont_Factor=1;
+cont_Factor=5;
 figure
 hold on
 for cont_Cluster=1:8;
@@ -172,7 +172,7 @@ L1=legend(L);
 
 figure
 L={};
-cont_Cluster=5;
+cont_Cluster=8;
 for cont_Distance=1:5;
     Gain=zeros(cont_Cluster*2-1,30);
     for cont_Antenna=1:cont_Cluster*2-1
@@ -182,7 +182,8 @@ for cont_Distance=1:5;
         end
     end
     Gain=mean(Gain,2);
-    plot(Gain.^2/(cont_Cluster*2-1),'-*')
+%     plot(Gain.^2/(cont_Cluster*2-1),'-*')
+    plot(Gain,'-*')
     hold on
     L{cont_Distance}=[num2str(cont_Distance*2-1) '\lambda/2'];
 end

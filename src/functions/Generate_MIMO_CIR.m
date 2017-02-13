@@ -35,5 +35,6 @@ for i=1:System.Nr
 end
 
 MIMO_CIR.h=h;
+MIMO_CIR.Narrowband=sum(cat(3,MIMO_CIR.H{:}),3);
 
 end

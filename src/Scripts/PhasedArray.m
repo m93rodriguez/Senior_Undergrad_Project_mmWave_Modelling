@@ -25,7 +25,7 @@ for Direction=0:1:360
 Direction=deg2rad(Direction);
 
 n=0:N-1;
-Shift=2*pi/lambda*n*Separation*sin(Direction);
+Shift=-2*pi/lambda*n*Separation*sin(Direction);
 Shift=Shift+0*randi(4,size(Shift));
 
 %% Calculate phase shifts
@@ -53,7 +53,7 @@ end
 % % polar(SpatialLobes.AOD,ones(size(SpatialLobes.AOD)),'*')
 % hold on
 clf
-Plot_polar_dB(theta,abs(Gain/sqrt(N)).^2,22,'b')
+Plot_polar_dB(theta,abs(Gain/sqrt(N)).^2,5,'b')
 % hold on
 % polar(theta,0.5*ones(size(theta)),'r')
 % Theoretical=1*psinc((sin(theta)-sin(Direction))*2*pi*Separation/lambda,N)/N;

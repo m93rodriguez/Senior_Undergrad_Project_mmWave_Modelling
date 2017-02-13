@@ -8,7 +8,7 @@ ClusterNumber=max([1 poissrnd(Param.Time.MeanClusterNumber)]);
 SubclusterNumber=max([poissrnd(Param.Time.MeanSubclusterNumber,1,ClusterNumber);...
     ones(1,ClusterNumber)]);
 
-%% Calculate SISO Channle Impulse Response
+%% Calculate SISO Channel Impulse Response
 Path_Loss_dB=Generate_Path_Loss_dB(Param.Large);
 TimePositions=Generate_Time_Positions(Param.Time,Param.System,...
     ClusterNumber,SubclusterNumber);

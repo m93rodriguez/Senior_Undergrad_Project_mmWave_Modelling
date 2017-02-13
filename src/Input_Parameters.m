@@ -43,3 +43,7 @@ Param.Spatial.AS_AOD_el=3;          % AOD elevation angular spread (degrees)
 Param.Spatial.AS_AOA_az=7.5;        % AOA azimutal angular spread (degrees)
 Param.Spatial.AS_AOA_el=6;          % AOA elevation angular spread (degrees)
 
+% Correlation Parameters
+Param.Correlation.AS_AOD_az=15;      % AOD azimutal angular spread for multipath component (degrees)
+Param.Correlation.AS_AOA_az=15;      % AOA azimutal angular spread for multipath component (degrees)
+

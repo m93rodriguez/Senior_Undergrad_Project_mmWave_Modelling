@@ -30,12 +30,14 @@ for cont=1:NumAntennas
 end
 
 Stream=[];
+AntennaStream=cell(NumAntennas,1);
 for NumSymbol=1:length(DetectedSymbol)
     for cont=1:NumAntennas
         Stream=[Stream BitStream{cont}(NumSymbol,:)];
+        AntennaStream{cont}=[AntennaStream{cont} BitStream{cont}(NumSymbol,:)];
     end
 end
 
 Demodulation.Stream=Stream;
-
+Demodulation.AntennaStream=AntennaStream;
 end

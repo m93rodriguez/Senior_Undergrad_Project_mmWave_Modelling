@@ -11,7 +11,7 @@ Param.Phys.lambda=Param.Phys.c/(Param.Phys.f*1e9);        % Wavelength (m)
 Param.Large.Exponent=4.4;              % Path Loss Exponent
 Param.Large.Shadowing=5;              % Shadowing factor (dB)
 Param.Large.Distance=200;                  % TX-RX Distance (m)
-Param.Large.Power=70;                  % Transmit Power (dB)
+Param.Large.Power=70;                  % Transmit Power (dBm)
 Param.Large.CloseIn=1;                   % Close in reference
 %--------------------------------------------------------------------------
 % System Definition

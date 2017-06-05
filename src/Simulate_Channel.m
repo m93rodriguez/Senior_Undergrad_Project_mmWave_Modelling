@@ -1,5 +1,5 @@
-function ErrorStatistics=Simulate_Channel(MIMO_CIR,StreamLength,...
-    SymbolDuration,BitsPerSymbol,NoisePowerDensity)
+function [ErrorStatistics]=Simulate_Channel(MIMO_CIR,StreamLength,...
+    SymbolDuration,BitsPerSymbol,NoisePowerDensity,Type)
 
 %% Prepare System
 TransmitAntennas=MIMO_CIR.TransmitAntennas;
@@ -11,11 +11,11 @@ end
 
 % Message Definition-------------------------------------------------------
 BinaryDigits='01';
-Stream=BinaryDigits(randi(2,1,StreamLength));
+Stream=BinaryDigits(randi(1,1,StreamLength));
 % End Message Definition---------------------------------------------------
 
 ModulationDefinition=Define_Modulation(TransmitAntennas,ReceiveAntennas,SymbolDuration,...
-    BitsPerSymbol,'QAM','on');
+    BitsPerSymbol,Type,'on');
 
 % Spatial Mulitplexing gains and matrices----------------------------------
 

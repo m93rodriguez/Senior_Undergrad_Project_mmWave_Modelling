@@ -2,8 +2,8 @@ function Plot_polar_dB(Angle,Gain,Range_dB,Properties)
 if nargin < 4, Properties='b';end
 if nargin < 3, Range_dB=20;end
 
-Num_Rays=25;
-Gain_Inc=round(Range_dB/5);
+Num_Rays=13; % Default = 25
+Gain_Inc=round(Range_dB/2.5); % Default = 5
 
 % Corrdinates
 x_pos=cos(linspace(-pi,pi,360));
@@ -38,7 +38,7 @@ for cont=1:Num_Rays-1
     L.Color=[0.7 0.7 0.7];
     L.LineStyle='--';
     T=text(1.1*cos(Ray_Ang(cont)),1.1*sin(Ray_Ang(cont)),...
-        [num2str(rad2deg(Ray_Ang(cont))) ' Â°']);
+        [num2str(wrapTo180(rad2deg(Ray_Ang(cont)))) ' °']);
     T.HorizontalAlignment='center';
     T.VerticalAlignment='middle';
 end
